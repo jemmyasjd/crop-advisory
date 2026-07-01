@@ -1,0 +1,42 @@
+{
+  "disease": "Fusarium Wilt",
+  "description": "A major soil-borne fungal disease of watermelon caused by Fusarium oxysporum f. sp. niveum. Warm, humid, waterlogged conditions favour infection.",
+  "window_days": 3,
+  "rules": [
+    {
+      "rule_name": "Temperature",
+      "parameter": "avg_temperature",
+      "operator": "BETWEEN",
+      "min_value": 20,
+      "max_value": 28,
+      "consecutive_days": null,
+      "score": 40,
+      "note": "Triggered if the 3-day average temperature is between 20C and 28C."
+    },
+    {
+      "rule_name": "Humidity",
+      "parameter": "humidity",
+      "operator": "GTE",
+      "min_value": 85,
+      "max_value": null,
+      "consecutive_days": 3,
+      "score": 30,
+      "note": "Triggered if relative humidity is >=85% on all 3 consecutive days."
+    },
+    {
+      "rule_name": "Soil Moisture",
+      "parameter": "soil_moisture",
+      "operator": "GTE",
+      "min_value": 90,
+      "max_value": null,
+      "consecutive_days": null,
+      "score": 30,
+      "note": "Triggered if today's field soil moisture is >=90% capacity."
+    }
+  ],
+  "levels": [
+    { "min_score": 70, "max_score": 100, "risk_level": "HIGH",     "advisory": "Immediate chemical drenching required." },
+    { "min_score": 40, "max_score": 69,  "risk_level": "MODERATE", "advisory": "Monitor field daily; restrict excess irrigation." },
+    { "min_score": 0,  "max_score": 39,  "risk_level": "LOW",      "advisory": "No action required." }
+  ]
+}
