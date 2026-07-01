@@ -72,6 +72,7 @@ export default function Profile() {
                   <div className="field-hint">Email cannot be changed.</div>
                 </div>
                 <FormField label="Phone" name="phone" placeholder="+91…" />
+                {/* New Password field hidden — password change disabled in the UI for now.
                 <FormField
                   label="New Password"
                   name="password"
@@ -79,6 +80,7 @@ export default function Profile() {
                   placeholder="Leave blank to keep current"
                   hint="Only fill this if you want to change your password."
                 />
+                */}
                 <button type="submit" className="btn btn-primary" disabled={isSubmitting}>
                   {isSubmitting ? 'Saving…' : 'Save Changes'}
                 </button>
