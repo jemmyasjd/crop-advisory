@@ -1,10 +1,24 @@
-# 🍉 Watermelon Crop Advisory & Risk Engine
+# [Crop Advisory & Risk Engine](https://crop-advise.vercel.app/)
 
 A full-stack application that generates **daily crop advisories** for Watermelon.
 It tracks the crop's growth stage from accumulated heat units (GDD), scores
 disease risk (Fusarium Wilt) from weather, recommends N/P/K fertilizer dosages
 from a soil report scaled to field size, and produces a natural-language summary
 via the **Groq AI** API.
+
+## 🔗 Live Links
+
+| Resource                    | Link                                                                                   |
+| --------------------------- | -------------------------------------------------------------------------------------- |
+| 🌾 Farmer Web App           | https://crop-advise.vercel.app/                                                        |
+| 🛠️ Admin Panel              | https://crop-advisory-admin.vercel.app/                                                |
+| ⚙️ Backend API (base)       | https://crop-advisory-three.vercel.app/api/                                            |
+| 📘 API Docs (Swagger UI)    | https://crop-advisory-three.vercel.app/api/docs                                        |
+| 💻 Source Code (GitHub)     | https://github.com/jemmyasjd/crop-advisory                                             |
+| 🗄️ Database Schema (SQL)    | [backend/src/db/schema.sql](https://github.com/jemmyasjd/crop-advisory/blob/master/backend/src/db/schema.sql) |
+
+> **Admin login:** use the seeded admin account (default `admin@cropadvisory.com` / `Admin@12345`).
+> **Farmer app:** sign up a new account, then create a field, upload a soil report, and generate an advisory.
 
 This repository is a monorepo with three independent applications:
 
@@ -169,10 +183,12 @@ admin panel without redeploying.
 
 | Deliverable        | Where                                                                 |
 | ------------------ | --------------------------------------------------------------------- |
-| Database schema    | [`backend/src/db/schema.sql`](backend/src/db/schema.sql) (+ `migrate.js`) |
-| Source code        | `backend/src/`, `frontend/src/`, `admin/src/`                         |
-| Configurations     | [`backend/src/config/datasets/`](backend/src/config/datasets/) (JSON) |
+| Database schema    | [`backend/src/db/schema.sql`](https://github.com/jemmyasjd/crop-advisory/blob/master/backend/src/db/schema.sql) (SQL DDL, run by `migrate.js`) |
+| Source code        | [`backend/src/`](backend/src/), [`frontend/src/`](frontend/src/), [`admin/src/`](admin/src/) |
+| Configurations     | [`backend/src/config/datasets/`](backend/src/config/datasets/) (JSON, seeded into DB) |
 | README / setup     | This file + per-app `README.md` in each folder                        |
+| API endpoint       | `GET /api/fields/:fieldId/advisory` — see [Swagger docs](https://crop-advisory-three.vercel.app/api/docs) |
+| Verification test  | [`backend/tests/`](backend/tests/) (`advisory.test.js`, `engines.test.js`) |
 
 ---
 
