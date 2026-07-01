@@ -8,7 +8,15 @@ const config = require('./config');
 
 const app = express();
 
-app.use(cors());
+// CORS — allow all origins for now (open API).
+// To lock down later, replace `origin: '*'` with an array/allowlist of URLs.
+const corsOptions = {
+  origin: '*',
+  methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+};
+app.use(cors(corsOptions));
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 if (config.env !== 'test') app.use(morgan('dev'));
